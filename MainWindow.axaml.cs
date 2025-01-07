@@ -16,6 +16,10 @@ public partial class MainWindow : Window
         ExtendClientAreaToDecorationsHint = true;
         ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.NoChrome;
         ExtendClientAreaTitleBarHeightHint = -1;
+
+        this.Width = 1152;
+        this.Height = 648;
+        this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
     }
     private void OnMinimizeClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
