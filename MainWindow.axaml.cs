@@ -41,4 +41,15 @@ public partial class MainWindow : Window
             this.BeginMoveDrag(e);
         }
     }
+    private void OnTitleBarDoubleTapped(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        if (this.WindowState == WindowState.Maximized)
+        {
+            this.WindowState = WindowState.Normal;
+        }
+        else
+        {
+            this.WindowState = WindowState.Maximized;
+        }
+    }
 }
