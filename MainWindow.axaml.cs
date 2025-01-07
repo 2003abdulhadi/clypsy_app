@@ -1,4 +1,8 @@
+using System;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Styling;
 
 namespace clypsy;
 
@@ -51,5 +55,19 @@ public partial class MainWindow : Window
         {
             this.WindowState = WindowState.Maximized;
         }
+    }
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        if (!OperatingSystem.IsWindows()) return;
+
+        var style = new Style();
+        style.Selector = Selectors.Is<Window>(null)
+          .PropertyEquals(WindowStateProperty, WindowState.Maximized);
+
+        var setter = new Setter();
+        setter.Property = PaddingProperty;
+        setter.Value = Thickness.Parse("8");
+        style.Add(setter);
+        Styles.Add(style);
     }
 }
