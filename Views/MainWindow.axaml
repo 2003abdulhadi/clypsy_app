@@ -1,0 +1,26 @@
+<Window
+    x:Class="clypsy.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:clypsy.Views"
+    Title="clypsy"
+    Width="1152"
+    Height="648"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Border Background="#2B2B2B">
+        <Grid>
+            <!--  Custom Title Bar  -->
+            <views:TitleBar />
+
+            <!--  Main Content Area  -->
+            <Grid Margin="0,30,0,0">
+                <!--  Container for switching views  -->
+                <ContentControl Name="MainContentControl" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

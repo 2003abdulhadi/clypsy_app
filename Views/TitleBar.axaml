@@ -1,0 +1,46 @@
+<UserControl
+    x:Class="clypsy.Views.TitleBar"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Border
+        Height="30"
+        VerticalAlignment="Top"
+        Background="#333"
+        DoubleTapped="OnTitleBarDoubleTapped"
+        PointerPressed="OnTitleBarPointerPressed">
+        <Grid>
+            <TextBlock
+                Margin="10,0"
+                VerticalAlignment="Center"
+                Foreground="White"
+                Text="Clypsy" />
+            <StackPanel
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <!--  Minimize Button  -->
+                <Button
+                    Width="30"
+                    Height="30"
+                    Click="OnMinimizeClick"
+                    Content="-" />
+                <!--  Maximize/Restore Button  -->
+                <Button
+                    Width="30"
+                    Height="30"
+                    Click="OnMaximizeRestoreClick"
+                    Content="☐" />
+                <!--  Close Button  -->
+                <Button
+                    Width="30"
+                    Height="30"
+                    Background="Red"
+                    Click="OnCloseClick"
+                    Content="X"
+                    Foreground="White" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

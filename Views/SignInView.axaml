@@ -1,0 +1,52 @@
+<UserControl
+    x:Class="clypsy.Views.SignInView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Border Padding="20" Background="#2B2B2B">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="15">
+            <!--  Email Input  -->
+            <TextBox
+                Name="EmailTextBox"
+                Width="300"
+                HorizontalAlignment="Center"
+                Watermark="Email" />
+
+            <!--  Password Input  -->
+            <TextBox
+                Name="PasswordTextBox"
+                Width="300"
+                HorizontalAlignment="Center"
+                PasswordChar="●"
+                Watermark="Password" />
+
+            <!--  Sign In Button  -->
+            <Button
+                Width="300"
+                Height="40"
+                Click="OnSignInClick"
+                Content="Sign In" />
+
+            <!--  Forgot Password Link (as TextBlock with Click event)  -->
+            <TextBlock
+                HorizontalAlignment="Center"
+                Cursor="Hand"
+                Foreground="#007ACC"
+                PointerPressed="OnHyperlinkClick"
+                Text="Forgot password?" />
+
+            <!--  Error Message  -->
+            <TextBlock
+                Name="ErrorMessageTextBlock"
+                HorizontalAlignment="Center"
+                Foreground="Red"
+                Text="Incorrect email or password"
+                IsVisible="False" />
+        </StackPanel>
+    </Border>
+</UserControl>
