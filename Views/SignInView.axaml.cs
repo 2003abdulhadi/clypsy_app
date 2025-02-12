@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using Avalonia.Input;
 using clypsy.Common;
+using System.Net.Http.Json;
 
 namespace clypsy.Views;
 
@@ -47,13 +48,9 @@ public partial class SignInView : UserControl
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 // // Parse token from response
-                var responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseBody);
-                // var responseData = JsonSerializer.Deserialize<SignInResponse>(responseBody);
-
-                // // Store token securely
-                // StoreToken(responseData?.Token);
-
+                var responseBody = await response.Content.ReadFromJsonAsync<AuthResponse>() ?? throw new InvalidOperationException("Auth response was null");
+                TokenStorageService.Instance.SaveRefreshToken(responseBody.RefreshToken!);
+                responseBody = null;
                 // Notify MainWindow that login was successful
                 LoginSuccess?.Invoke();
             }
@@ -107,8 +104,9 @@ public partial class SignInView : UserControl
         });
     }
 
-    private class SignInResponse
+    private class AuthResponse
     {
-        public string? Token { get; set; }
+        public string? AccessToken { get; set; }
+        public string? RefreshToken { get; set; }
     }
 }
