@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using Avalonia.Input;
+using clypsy.Common;
 
 namespace clypsy.Views;
 
@@ -41,16 +42,17 @@ public partial class SignInView : UserControl
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Send request to server
-            var response = await _httpClient.PostAsync("https://your-server.com/api/signin", content);
+            var response = await _httpClient.PostAsync($"{Globals.apiBaseUrl}/auth/signin", content);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                // Parse token from response
+                // // Parse token from response
                 var responseBody = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<SignInResponse>(responseBody);
+                Console.WriteLine(responseBody);
+                // var responseData = JsonSerializer.Deserialize<SignInResponse>(responseBody);
 
-                // Store token securely
-                StoreToken(responseData?.Token);
+                // // Store token securely
+                // StoreToken(responseData?.Token);
 
                 // Notify MainWindow that login was successful
                 LoginSuccess?.Invoke();
