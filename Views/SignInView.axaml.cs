@@ -8,6 +8,7 @@ using Avalonia.Threading;
 using Avalonia.Input;
 using clypsy.Common;
 using System.Net.Http.Json;
+using clypsy.Services;
 
 namespace clypsy.Views;
 
